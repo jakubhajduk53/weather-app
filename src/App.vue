@@ -1,18 +1,19 @@
 <script setup lang="ts">
 import { useWeatherStore } from "./store/store";
 import { onMounted } from "vue";
+import SearchBar from "./components/SearchBar.vue";
 
 const weatherStore = useWeatherStore();
 
 onMounted(async () => {
-  await weatherStore.fetch("warsaw");
+  await weatherStore.fetch();
 });
 </script>
 
 <template>
   <div class="flex flex-col items-center">
-    <div>{{ weatherStore.weatherData.name }}</div>
-    <div>{{ weatherStore.weatherData.main.temp }}</div>
+    <SearchBar />
+    <div>{{ weatherStore.weatherData }}</div>
   </div>
 </template>
 
