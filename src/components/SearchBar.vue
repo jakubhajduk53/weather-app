@@ -5,24 +5,20 @@ import { useWeatherStore } from "../store/store";
 import { ref } from "vue";
 
 const inputCityName = ref<string>();
-
 const weatherStore = useWeatherStore();
-
-const getWeatherData = async () => {
-  weatherStore.setCityName(inputCityName);
-  await weatherStore.fetch();
-};
 </script>
 
 <template>
-  <div class="flex gap-2">
+  <div class="flex gap-2 mt-2 mb-2">
     <el-input
       v-model="inputCityName"
       style="width: 240px"
       placeholder="Please Input"
       :prefix-icon="Search"
     />
-    <el-button @click="getWeatherData">Search</el-button>
+    <el-button @click="weatherStore.getWeatherData(inputCityName as string)"
+      >Search</el-button
+    >
   </div>
 </template>
 
