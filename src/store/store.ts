@@ -5,7 +5,7 @@ import { ref } from "vue";
 export const useWeatherStore = defineStore("store", {
   state: () => ({
     weatherData: ref<Object>(),
-    cityName: ref<string>("Warsaw"),
+    cityName: ref<string>(),
   }),
   getters: {},
   actions: {
@@ -16,6 +16,10 @@ export const useWeatherStore = defineStore("store", {
     },
     setCityName(newCityName: string) {
       this.cityName = newCityName;
+    },
+    async getWeatherData(inputCityName: string) {
+      this.setCityName(inputCityName);
+      await this.fetch();
     },
   },
 });
