@@ -1,40 +1,50 @@
-interface TemperatureArray {
-  current: number;
-  minTemp: number;
-  maxTemp: number;
-  feelsLike: number;
-}
-interface WeatherTypeArray {
-  weatherType: string;
-  weatherDescription: string;
-  clouds: number;
+interface Weather {
+  id: number;
+  main: string;
+  description: string;
   icon: string;
 }
-interface PressureArray {
+interface MainWeather {
+  temp: number;
+  feels_like: number;
+  temp_min: number;
+  temp_max: number;
   pressure: number;
-  groundLevel: number;
-  seaLevel: number;
+  humidity: number;
+  sea_level: number;
+  grnd_level: number;
 }
-interface TimeArray {
-  current: number;
+interface Wind {
+  speed: number;
+  deg: number;
+  gust: number;
+}
+interface Clouds {
+  all: number;
+}
+interface Sys {
+  type: number;
+  id: number;
+  country: string;
   sunrise: number;
   sunset: number;
-  timezone: number;
 }
 interface Coordinates {
-  latitude: number;
-  longitude: number;
+  lon: number;
+  lat: number;
 }
-
-export interface WeatherArray {
-  cityName: string;
-  countryTag: string;
-  weather: WeatherTypeArray[];
-  temperature: TemperatureArray[];
-  humidity: number;
-  windSpeed: number;
-  pressure: PressureArray[];
+export interface WeatherResponse {
+  coord: Coordinates;
+  weather: Weather[];
+  base: string;
+  main: MainWeather;
   visibility: number;
-  time: TimeArray[];
-  coordinates: Coordinates[];
+  wind: Wind;
+  clouds: Clouds;
+  dt: number;
+  sys: Sys;
+  timezone: number;
+  id: number;
+  name: string;
+  cod: number;
 }
