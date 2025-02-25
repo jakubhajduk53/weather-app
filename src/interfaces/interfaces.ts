@@ -14,7 +14,7 @@ interface MainWeather {
   sea_level: number;
   grnd_level: number;
 }
-interface Wind {
+export interface Wind {
   speed: number;
   deg: number;
   gust: number;
@@ -29,7 +29,7 @@ interface Sys {
   sunrise: number;
   sunset: number;
 }
-interface Coordinates {
+export interface Coordinates {
   lon: number;
   lat: number;
 }
@@ -47,4 +47,39 @@ export interface WeatherResponse {
   id: number;
   name: string;
   cod: number;
+}
+
+export interface Temperature {
+  temp: number;
+  feels_like: number;
+  temp_min: number;
+  temp_max: number;
+}
+
+export interface Pressure {
+  pressure: number;
+  sea_level: number;
+  grnd_level: number;
+}
+
+export interface MainInfo {
+  country: string;
+  main: string;
+  description: string;
+  icon: string;
+}
+
+export interface Time {
+  dt: number;
+  timezone: number;
+  sunrise: number;
+  sunset: number;
+}
+
+export interface Humidity {
+  humidity: number;
+}
+
+export interface Visibility {
+  visibility: number;
 }

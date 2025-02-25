@@ -1,9 +1,10 @@
 import { ref } from "vue";
+import type { WeatherResponse } from "../interfaces/interfaces";
 
 const apiKey = import.meta.env.VITE_API_KEY;
 
 export const useFetchWeather = () => {
-  const result = ref<Object>();
+  const result = ref<WeatherResponse>();
   const loading = ref(false);
   const error = ref<string>();
 
@@ -17,7 +18,7 @@ export const useFetchWeather = () => {
       if (!response.ok) {
         throw new Error("Failed to fetch weather data");
       }
-      const data: Object = await response.json();
+      const data: WeatherResponse = await response.json();
       result.value = data;
     } catch (e) {
       error.value = (e as Error).message;
