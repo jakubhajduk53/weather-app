@@ -49,37 +49,17 @@ export interface WeatherResponse {
   cod: number;
 }
 
-export interface Temperature {
-  current?: number;
-  feelsLike?: number;
-  minTemperature?: number;
-  maxTemperature?: number;
-}
-
-export interface Pressure {
-  pressure?: number;
-  seaLevel?: number;
-  groundLevel?: number;
-}
-
-export interface MainInfo {
-  countryName?: string;
-  weatherType?: string;
-  weatherDescription?: string;
+export interface BasicData {
+  name?: string;
+  tag?: string;
   icon?: string;
-}
-
-export interface Time {
+  current?: number;
+  weatherType?: string;
   currentTime?: number;
-  timezone?: number;
-  sunrise?: number;
-  sunset?: number;
-}
-
-export interface Humidity {
   humidity?: number;
 }
 
-export interface Visibility {
-  visibility?: number;
+export interface ExtraDataTree {
+  label?: string;
+  children?: ExtraDataTree[];
 }
