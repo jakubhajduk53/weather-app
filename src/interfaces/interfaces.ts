@@ -50,36 +50,36 @@ export interface WeatherResponse {
 }
 
 export interface Temperature {
-  temp: number;
-  feels_like: number;
-  temp_min: number;
-  temp_max: number;
+  current?: number;
+  feelsLike?: number;
+  minTemperature?: number;
+  maxTemperature?: number;
 }
 
 export interface Pressure {
-  pressure: number;
-  sea_level: number;
-  grnd_level: number;
+  pressure?: number;
+  seaLevel?: number;
+  groundLevel?: number;
 }
 
 export interface MainInfo {
-  country: string;
-  main: string;
-  description: string;
-  icon: string;
+  countryName?: string;
+  weatherType?: string;
+  weatherDescription?: string;
+  icon?: string;
 }
 
 export interface Time {
-  dt: number;
-  timezone: number;
-  sunrise: number;
-  sunset: number;
+  currentTime?: number;
+  timezone?: number;
+  sunrise?: number;
+  sunset?: number;
 }
 
 export interface Humidity {
-  humidity: number;
+  humidity?: number;
 }
 
 export interface Visibility {
-  visibility: number;
+  visibility?: number;
 }

@@ -33,7 +33,7 @@ export const useWeatherStore = defineStore("store", {
       };
     },
     getCityName(state): string {
-      return state.cityName;
+      return state.cityName ?? "";
     },
     getMainInfo(state): MainInfo {
       return {
