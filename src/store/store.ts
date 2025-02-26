@@ -2,12 +2,8 @@ import { defineStore } from "pinia";
 import { useFetchWeather } from "../composables/useFetchWeather";
 import type {
   WeatherResponse,
-  Temperature,
-  Pressure,
-  MainInfo,
-  Time,
-  Humidity,
-  Visibility,
+  BasicData,
+  ExtraDataTree,
 } from "../interfaces/interfaces";
 import { ref } from "vue";
 
@@ -17,49 +13,64 @@ export const useWeatherStore = defineStore("store", {
     cityName: ref<string>(),
   }),
   getters: {
-    getTemperature(state): Temperature {
+    getBasicData(state): BasicData {
       return {
-        current: state.weatherData?.main?.temp,
-        feelsLike: state.weatherData?.main?.feels_like,
-        minTemperature: state.weatherData?.main?.temp_min,
-        maxTemperature: state.weatherData?.main?.temp_max,
-      };
-    },
-    getPressure(state): Pressure {
-      return {
-        pressure: state.weatherData?.main?.pressure,
-        groundLevel: state.weatherData?.main?.grnd_level,
-        seaLevel: state.weatherData?.main?.sea_level,
-      };
-    },
-    getCityName(state): string {
-      return state.cityName ?? "";
-    },
-    getMainInfo(state): MainInfo {
-      return {
-        countryName: state.weatherData?.sys?.country,
-        weatherType: state.weatherData?.weather[0]?.main,
-        weatherDescription: state.weatherData?.weather[0]?.description,
+        name: state.cityName ?? "",
+        tag: state.weatherData?.sys?.country,
         icon: state.weatherData?.weather[0]?.icon,
-      };
-    },
-    getCityTime(state): Time {
-      return {
+        current: state.weatherData?.main?.temp,
+        weatherType: state.weatherData?.weather[0]?.main,
         currentTime: state.weatherData?.dt,
-        timezone: state.weatherData?.timezone,
-        sunrise: state.weatherData?.sys?.sunrise,
-        sunset: state.weatherData?.sys?.sunset,
-      };
-    },
-    getHumidity(state): Humidity {
-      return {
         humidity: state.weatherData?.main?.humidity,
       };
     },
-    getVisibility(state): Visibility {
-      return {
-        visibility: state.weatherData?.visibility,
-      };
+    getExtraData(state): ExtraDataTree[] {
+      return [
+        {
+          label: "More Info",
+          children: [
+            {
+              label: "Temperature",
+              children: [
+                {
+                  label: `Feels Like: ${state.weatherData?.main?.feels_like}°C`,
+                },
+                {
+                  label: `Minimal Temperature: ${state.weatherData?.main?.temp_min}°C`,
+                },
+                {
+                  label: `Max Temperature: ${state.weatherData?.main?.temp_max}°C`,
+                },
+              ],
+            },
+            {
+              label: "Pressure",
+              children: [
+                {
+                  label: `Sea Level Pressure: ${state.weatherData?.main?.sea_level}hPa`,
+                },
+                {
+                  label: `Ground Level: ${state.weatherData?.main?.grnd_level}hPa`,
+                },
+              ],
+            },
+            {
+              label: "Time",
+              children: [
+                {
+                  label: `Timezone: ${state.weatherData?.timezone}`,
+                },
+                {
+                  label: `Sunrise: ${state.weatherData?.sys?.sunrise}`,
+                },
+                {
+                  label: `Sunset: ${state.weatherData?.sys?.sunset}`,
+                },
+              ],
+            },
+          ],
+        },
+      ];
     },
   },
   actions: {
