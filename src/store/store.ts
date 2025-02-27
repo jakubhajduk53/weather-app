@@ -64,7 +64,12 @@ export const useWeatherStore = defineStore("store", {
       await fetchWeather(this.cityName as string);
       this.weatherData = result.value;
     },
+    clear() {
+      this.weatherData = undefined;
+      this.cityName = undefined;
+    },
     async getWeatherData(inputCityName: string) {
+      this.clear();
       this.cityName = inputCityName;
       await this.fetch();
     },
