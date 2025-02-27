@@ -6,7 +6,7 @@ import { ElTree } from "element-plus";
 
 <template>
   <div
-    class="flex flex-col text-center items-center justify-center w-[300px] gap-1 p-3 border rounded-[5%]"
+    class="flex flex-col text-center items-center justify-center w-[300px] gap-1 p-3 rounded-[5%] outline-1 outline-gray-100 shadow-lg"
   >
     <div class="text-2xl">
       {{
@@ -15,7 +15,9 @@ import { ElTree } from "element-plus";
         }`
       }}
     </div>
-    <div class="flex flex-col items-center border p-2 rounded-[5%] w-[90%]">
+    <div
+      class="flex flex-col items-center outline-1 outline-gray-100 shadow p-2 rounded-[5%] w-[90%]"
+    >
       <img
         :src="`https://openweathermap.org/img/wn/${weatherStore.getBasicData.icon}@2x.png`"
         class="w-[75px] h-[75px]"
@@ -24,7 +26,12 @@ import { ElTree } from "element-plus";
     </div>
     <div>Weather: {{ weatherStore.getBasicData.weatherType }}</div>
     <div>Humidity: {{ weatherStore.getBasicData.humidity }}%</div>
-    <el-tree :data="weatherStore.getExtraData" accordion class="w-full" />
+    <el-tree
+      :data="weatherStore.getExtraData"
+      accordion
+      class="w-full"
+      style="color: black"
+    />
   </div>
 </template>
 
