@@ -55,7 +55,6 @@ export interface BasicData {
   icon?: string;
   current?: number;
   weatherType?: string;
-  currentTime?: number;
   humidity?: number;
 }
 

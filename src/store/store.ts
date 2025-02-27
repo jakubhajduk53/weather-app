@@ -18,9 +18,8 @@ export const useWeatherStore = defineStore("store", {
         name: state.cityName ?? "",
         tag: state.weatherData?.sys?.country,
         icon: state.weatherData?.weather[0]?.icon,
-        current: state.weatherData?.main?.temp,
+        current: Math.round(state.weatherData?.main?.temp as number),
         weatherType: state.weatherData?.weather[0]?.main,
-        currentTime: state.weatherData?.dt,
         humidity: state.weatherData?.main?.humidity,
       };
     },
@@ -51,20 +50,6 @@ export const useWeatherStore = defineStore("store", {
                 },
                 {
                   label: `Ground Level: ${state.weatherData?.main?.grnd_level}hPa`,
-                },
-              ],
-            },
-            {
-              label: "Time",
-              children: [
-                {
-                  label: `Timezone: ${state.weatherData?.timezone}`,
-                },
-                {
-                  label: `Sunrise: ${state.weatherData?.sys?.sunrise}`,
-                },
-                {
-                  label: `Sunset: ${state.weatherData?.sys?.sunset}`,
                 },
               ],
             },
