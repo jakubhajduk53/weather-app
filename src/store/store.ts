@@ -18,7 +18,7 @@ export const useWeatherStore = defineStore("store", {
         name: state.cityName ?? "",
         tag: state.weatherData?.sys?.country,
         icon: state.weatherData?.weather[0]?.icon,
-        current: Math.round(state.weatherData?.main?.temp),
+        current: Math.round(state.weatherData?.main.temp ?? 0),
         weatherType: state.weatherData?.weather[0]?.main,
         humidity: state.weatherData?.main?.humidity,
       };
