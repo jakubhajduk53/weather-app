@@ -2,6 +2,17 @@
 import { useWeatherStore } from "../store/store";
 const weatherStore = useWeatherStore();
 import { ElTree } from "element-plus";
+import { computed } from "vue";
+
+const weatherIcon = computed(() => {
+  return `https://openweathermap.org/img/wn/${weatherStore.getBasicData.icon}@2x.png`;
+});
+
+const fullCountryName = computed(() => {
+  return `${weatherStore.getBasicData.name?.toUpperCase()}, ${
+    weatherStore.getBasicData.tag
+  }`;
+});
 </script>
 
 <template>
@@ -9,19 +20,12 @@ import { ElTree } from "element-plus";
     class="flex flex-col text-center items-center justify-center w-[300px] gap-1 p-3 rounded-[5%] outline-1 outline-gray-100 shadow-lg"
   >
     <div class="text-2xl">
-      {{
-        `${weatherStore.getBasicData.name?.toUpperCase()}, ${
-          weatherStore.getBasicData.tag
-        }`
-      }}
+      {{ fullCountryName }}
     </div>
     <div
       class="flex flex-col items-center outline-1 outline-gray-100 shadow p-2 rounded-[5%] w-[90%]"
     >
-      <img
-        :src="`https://openweathermap.org/img/wn/${weatherStore.getBasicData.icon}@2x.png`"
-        class="w-[75px] h-[75px]"
-      />
+      <img :src="weatherIcon" class="w-[75px] h-[75px]" />
       <div class="text-4xl">{{ weatherStore.getBasicData.current }}°C</div>
     </div>
     <div>Weather: {{ weatherStore.getBasicData.weatherType }}</div>
