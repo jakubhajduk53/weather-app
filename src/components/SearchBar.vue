@@ -4,7 +4,7 @@ import { Search } from "@element-plus/icons-vue";
 import { useWeatherStore } from "../store/store";
 import { ref } from "vue";
 
-const inputCityName = ref<string>();
+const inputCityName = ref<string>("");
 const weatherStore = useWeatherStore();
 </script>
 
@@ -15,7 +15,7 @@ const weatherStore = useWeatherStore();
       placeholder="Please Input"
       :prefix-icon="Search"
     />
-    <el-button @click="weatherStore.getWeatherData(inputCityName as string)"
+    <el-button @click="weatherStore.getWeatherData(inputCityName)"
       >Search</el-button
     >
   </div>
