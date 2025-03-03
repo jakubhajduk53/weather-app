@@ -26,13 +26,13 @@ import { ElTree } from "element-plus";
     </div>
     <div>Weather: {{ weatherStore.getBasicData.weatherType }}</div>
     <div>Humidity: {{ weatherStore.getBasicData.humidity }}%</div>
-    <el-tree
-      :data="weatherStore.getExtraData"
-      accordion
-      class="w-full"
-      style="color: black"
-    />
+    <el-tree :data="weatherStore.getExtraData" accordion class="w-full" />
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.el-tree {
+  --el-tree-text-color: black;
+  --el-tree-expand-icon-color: black;
+}
+</style>

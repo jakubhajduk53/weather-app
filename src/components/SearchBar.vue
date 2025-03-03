@@ -9,10 +9,9 @@ const weatherStore = useWeatherStore();
 </script>
 
 <template>
-  <div class="flex gap-2 mt-2 mb-2">
+  <div class="flex gap-2 mt-2 mb-2 w-[300px]">
     <el-input
       v-model="inputCityName"
-      style="width: 240px"
       placeholder="Please Input"
       :prefix-icon="Search"
     />
