@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useWeatherStore } from "../store/store";
 const weatherStore = useWeatherStore();
-import { ElTree } from "element-plus";
+import { ElTree, ElProgress } from "element-plus";
 import { computed } from "vue";
 
 const weatherIcon = computed(() => {
@@ -28,8 +28,15 @@ const fullCountryName = computed(() => {
       <img :src="weatherIcon" class="w-[75px] h-[75px]" />
       <div class="text-4xl">{{ weatherStore.getBasicData.current }}°C</div>
     </div>
-    <div>Weather: {{ weatherStore.getBasicData.weatherType }}</div>
-    <div>Humidity: {{ weatherStore.getBasicData.humidity }}%</div>
+    <div class="text-2xl">
+      {{ weatherStore.getBasicData.weatherType }}
+    </div>
+    <el-progress type="circle" :percentage="weatherStore.getBasicData.humidity">
+      <div class="flex flex-col">
+        <span>Humidity</span>
+        <span>{{ weatherStore.getBasicData.humidity }}%</span>
+      </div>
+    </el-progress>
     <el-tree :data="weatherStore.getExtraData" accordion class="w-full" />
   </div>
 </template>
