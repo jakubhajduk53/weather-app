@@ -6,6 +6,10 @@ import { ref } from "vue";
 
 const inputCityName = ref<string>("");
 const weatherStore = useWeatherStore();
+
+const submit = () => {
+  weatherStore.getWeatherData(inputCityName.value);
+};
 </script>
 
 <template>
@@ -14,10 +18,9 @@ const weatherStore = useWeatherStore();
       v-model="inputCityName"
       placeholder="Please Input"
       :prefix-icon="Search"
+      @change="submit"
     />
-    <el-button @click="weatherStore.getWeatherData(inputCityName)"
-      >Search</el-button
-    >
+    <el-button @click="submit">Search</el-button>
   </div>
 </template>
 
