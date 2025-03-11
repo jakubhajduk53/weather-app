@@ -18,6 +18,7 @@ const fullCountryName = computed(() => {
 <template>
   <div
     class="flex flex-col text-center items-center justify-center w-[300px] gap-1 p-3 rounded-[5%] outline-1 outline-gray-100 shadow-lg"
+    v-if="weatherStore.weatherData"
   >
     <div class="text-2xl">
       {{ fullCountryName }}
@@ -38,6 +39,9 @@ const fullCountryName = computed(() => {
       </div>
     </el-progress>
     <el-tree :data="weatherStore.getExtraData" accordion class="w-full" />
+  </div>
+  <div v-else-if="weatherStore.errorStatus">
+    {{ weatherStore.errorStatus + ". Please try again with different input." }}
   </div>
 </template>
 

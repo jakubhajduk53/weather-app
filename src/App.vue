@@ -9,7 +9,7 @@ const weatherStore = useWeatherStore();
 <template>
   <div class="flex flex-col items-center">
     <SearchBar />
-    <WeatherContainer v-if="weatherStore.weatherData" />
+    <WeatherContainer v-loading="weatherStore.loadingStatus" />
   </div>
 </template>
 

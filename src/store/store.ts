@@ -5,6 +5,8 @@ export const useWeatherStore = defineStore("store", {
   state: (): State => ({
     weatherData: undefined,
     cityName: undefined,
+    errorStatus: undefined,
+    loadingStatus: false,
   }),
   getters: {
     getBasicData(state): BasicData {
@@ -54,9 +56,12 @@ export const useWeatherStore = defineStore("store", {
   },
   actions: {
     async fetch() {
-      const { result, fetchWeather } = useFetchWeather();
+      const { result, error, fetchWeather } = useFetchWeather();
+      this.loadingStatus = true;
       await fetchWeather(this.cityName as string);
+      this.loadingStatus = false;
       this.weatherData = result.value;
+      this.errorStatus = error.value;
     },
     clear() {
       this.weatherData = undefined;

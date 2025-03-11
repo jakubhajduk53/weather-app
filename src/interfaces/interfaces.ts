@@ -66,4 +66,6 @@ export interface ExtraDataTree {
 export interface State {
   weatherData: WeatherResponse | undefined;
   cityName: string | undefined;
+  errorStatus: string | undefined;
+  loadingStatus: boolean;
 }
