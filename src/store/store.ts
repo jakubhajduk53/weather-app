@@ -1,16 +1,10 @@
 import { defineStore } from "pinia";
 import { useFetchWeather } from "../composables/useFetchWeather";
-import type {
-  WeatherResponse,
-  BasicData,
-  ExtraDataTree,
-} from "../interfaces/interfaces";
-import { ref } from "vue";
-
+import type { BasicData, ExtraDataTree, State } from "../interfaces/interfaces";
 export const useWeatherStore = defineStore("store", {
-  state: () => ({
-    weatherData: ref<WeatherResponse>(),
-    cityName: ref<string>(),
+  state: (): State => ({
+    weatherData: undefined,
+    cityName: undefined,
   }),
   getters: {
     getBasicData(state): BasicData {

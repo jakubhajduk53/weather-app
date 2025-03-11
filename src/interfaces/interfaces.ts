@@ -62,3 +62,8 @@ export interface ExtraDataTree {
   label?: string;
   children?: ExtraDataTree[];
 }
+
+export interface State {
+  weatherData: WeatherResponse | undefined;
+  cityName: string | undefined;
+}
