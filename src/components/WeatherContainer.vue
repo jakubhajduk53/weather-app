@@ -20,7 +20,7 @@ const fullCountryName = computed(() => {
     class="flex flex-col text-center items-center justify-center w-[300px] gap-1 p-3 rounded-[5%] outline-1 outline-gray-100 shadow-lg"
     v-if="weatherStore.weatherData"
   >
-    <div class="text-2xl">
+    <div class="text-2xl break-all">
       {{ fullCountryName }}
     </div>
     <div

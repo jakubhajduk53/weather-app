@@ -19,8 +19,10 @@ const submit = () => {
       placeholder="Please Input"
       :prefix-icon="Search"
       @keypress.enter="submit"
+      clearable
+      class="shadow-xs"
     />
-    <el-button @click="submit">Search</el-button>
+    <el-button @click="submit" class="shadow-xs">Search</el-button>
   </div>
 </template>
 
