@@ -104,6 +104,8 @@ export const useWeatherStore = defineStore("store", {
     clear() {
       this.weatherData = undefined;
       this.cityName = undefined;
+      this.errorStatus = undefined;
+      this.loadingStatus = false;
     },
     async getWeatherData(inputCityName: string) {
       this.clear();

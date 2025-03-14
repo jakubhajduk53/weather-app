@@ -18,7 +18,7 @@ const submit = () => {
       v-model="inputCityName"
       placeholder="Please Input"
       :prefix-icon="Search"
-      @change="submit"
+      @keypress.enter="submit"
     />
     <el-button @click="submit">Search</el-button>
   </div>
