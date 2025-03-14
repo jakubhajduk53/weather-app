@@ -20,6 +20,11 @@ export const useWeatherStore = defineStore("store", {
       };
     },
     getExtraData(state): ExtraDataTree[] {
+      const sunrise = new Date(
+        (state.weatherData?.sys.sunrise as number) * 1000
+      );
+      const sunset = new Date((state.weatherData?.sys.sunset as number) * 1000);
+      const lastUpdate = new Date((state.weatherData?.dt as number) * 1000);
       return [
         {
           label: "More Info",
@@ -46,6 +51,39 @@ export const useWeatherStore = defineStore("store", {
                 },
                 {
                   label: `Ground Level: ${state.weatherData?.main?.grnd_level}hPa`,
+                },
+              ],
+            },
+            {
+              label: "Time",
+              children: [
+                {
+                  label: `Sunrise: ${sunrise.toLocaleTimeString()}`,
+                },
+                {
+                  label: `Sunset: ${sunset.toLocaleTimeString()}`,
+                },
+                {
+                  label: `Last updated: ${lastUpdate.toLocaleTimeString()}`,
+                },
+              ],
+            },
+            {
+              label: "Visibility",
+              children: [
+                {
+                  label: `${state.weatherData?.visibility}m`,
+                },
+              ],
+            },
+            {
+              label: "Coordinates",
+              children: [
+                {
+                  label: `Latitude: ${state.weatherData?.coord.lat}`,
+                },
+                {
+                  label: `Longitude: ${state.weatherData?.coord.lon}`,
                 },
               ],
             },
