@@ -26,9 +26,9 @@ const goBack = () => {
       @keypress.enter="submit"
       clearable
       class="shadow-xs"
-      :disabled="weatherStore.weatherData"
+      :disabled="weatherStore?.weatherData"
     >
-      <template #append v-if="weatherStore.weatherData"
+      <template #append v-if="weatherStore?.weatherData"
         ><el-button :icon="Back" @click="goBack"
       /></template>
     </el-input>
