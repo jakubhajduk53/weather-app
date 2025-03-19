@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ElInput, ElButton } from "element-plus";
-import { Search } from "@element-plus/icons-vue";
+import { Search, Back } from "@element-plus/icons-vue";
 import { useWeatherStore } from "../store/store";
 import { ref } from "vue";
 
@@ -9,6 +9,11 @@ const weatherStore = useWeatherStore();
 
 const submit = () => {
   weatherStore.getWeatherData(inputCityName.value);
+};
+
+const goBack = () => {
+  inputCityName.value = "";
+  weatherStore.clear();
 };
 </script>
 
@@ -21,9 +26,18 @@ const submit = () => {
       @keypress.enter="submit"
       clearable
       class="shadow-xs"
-    />
+      :disabled="weatherStore.weatherData"
+    >
+      <template #append v-if="weatherStore.weatherData"
+        ><el-button :icon="Back" @click="goBack"
+      /></template>
+    </el-input>
     <el-button @click="submit" class="shadow-xs">Search</el-button>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.el-input ::v-deep(.el-input-group__append) {
+  background-color: white;
+}
+</style>
