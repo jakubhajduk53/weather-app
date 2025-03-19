@@ -91,6 +91,9 @@ export const useWeatherStore = defineStore("store", {
         },
       ];
     },
+    isCitySelected(state) {
+      return state.weatherData !== undefined;
+    },
   },
   actions: {
     async fetch() {
