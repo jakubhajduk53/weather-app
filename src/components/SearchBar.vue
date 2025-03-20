@@ -29,10 +29,15 @@ const goBack = () => {
       :disabled="weatherStore.isCitySelected"
     >
       <template #append v-if="weatherStore.weatherData"
-        ><el-button :icon="Back" @click="goBack"
-      /></template>
+        ><el-button :icon="Back" @click="goBack" />
+      </template>
     </el-input>
-    <el-button @click="submit" class="shadow-xs">Search</el-button>
+    <el-button
+      v-if="!weatherStore.isCitySelected"
+      @click="submit"
+      class="shadow-xs"
+      >Search</el-button
+    >
   </div>
 </template>
 
