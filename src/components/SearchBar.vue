@@ -18,7 +18,7 @@ const goBack = () => {
 </script>
 
 <template>
-  <div class="flex gap-2 mt-2 mb-2 w-[300px]">
+  <div class="flex gap-2 mt-2 mb-2 w-[600px] max-w-[80vw]">
     <el-input
       v-model="inputCityName"
       placeholder="Please Input"
@@ -29,11 +29,12 @@ const goBack = () => {
       :disabled="weatherStore.isCitySelected"
     >
       <template #append v-if="weatherStore.weatherData"
-        ><el-button :icon="Back" @click="goBack" />
+        ><el-button color="hsl(195,83%,45%)" :icon="Back" @click="goBack" />
       </template>
     </el-input>
     <el-button
       v-if="!weatherStore.isCitySelected"
+      color="hsl(195,83%,45%)"
       @click="submit"
       class="shadow-xs"
       >Search</el-button
