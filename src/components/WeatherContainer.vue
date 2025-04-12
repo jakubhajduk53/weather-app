@@ -17,17 +17,17 @@ const fullCountryName = computed(() => {
 
 <template>
   <div
-    class="flex flex-col text-center items-center justify-center w-[600px] max-w-[80vw] gap-5 p-5 rounded-sm bg-radial from-[hsl(195,83%,75%)] to-[hsl(195,83%,55%)] inset-shadow-[0px_5px_5px_hsl(0,0%,0%,0.15)] shadow-[0px_5px_0px_hsl(0,0%,100%,0.15)]"
+    class="flex flex-col text-center items-center justify-center w-[600px] max-w-[80vw] gap-5 p-5 rounded-sm bg-radial from-[hsl(195,50%,75%)] to-[hsl(195,50%,55%)] inset-shadow-[0px_5px_5px_hsl(0,0%,0%,0.15)] shadow-[0px_5px_0px_hsl(0,0%,100%,0.05)]"
     v-if="weatherStore.weatherData"
   >
     <div class="text-3xl md:text-5xl font-bold break-all">
       {{ fullCountryName }}
     </div>
     <div
-      class="flex flex-col items-center gap-5 inset-shadow-[0px_3px_3px_hsl(0,0%,0%,0.3)] shadow-[0px_3px_0px_hsl(0,0%,100%,0.15)] p-5 rounded-sm w-[20em] max-w-[80%] bg-radial from-[hsl(195,83%,75%)] to-[hsl(195,83%,65%)]"
+      class="flex flex-col items-center gap-5 inset-shadow-[0px_3px_3px_hsl(0,0%,0%,0.3)] shadow-[0px_3px_0px_hsl(0,0%,100%,0.15)] p-5 rounded-sm w-[20em] max-w-[80%] bg-radial from-[hsl(195,50%,75%)] to-[hsl(195,50%,65%)]"
     >
       <div
-        class="inset-shadow-[0px_5px_5px_hsl(0,0%,0%,0.15)] shadow-[0px_5px_0px_hsl(0,0%,100%,0.15)] rounded-sm"
+        class="inset-shadow-[0px_5px_5px_hsla(0,0%,0%,0.15)] shadow-[0px_5px_0px_hsla(0,0%,100%,0.15)] rounded-sm"
       >
         <img :src="weatherIcon" class="w-[100px] h-[100px]" />
       </div>
@@ -42,14 +42,20 @@ const fullCountryName = computed(() => {
     <el-progress
       type="circle"
       :percentage="weatherStore.getBasicData.humidity"
-      class="inset-shadow-[0px_5px_5px_hsl(0,0%,0%,0.15)] shadow-[0px_5px_0px_hsl(0,0%,100%,0.15)] rounded-full p-3"
+      class="inset-shadow-[0px_5px_5px_hsla(0,0%,0%,0.15)] shadow-[0px_5px_0px_hsla(0,0%,100%,0.15)] rounded-full p-3"
     >
       <div class="flex flex-col">
         <span>Humidity</span>
-        <span>{{ weatherStore.getBasicData.humidity }}%</span>
+        <span class="text-xl md:text-3xl"
+          >{{ weatherStore.getBasicData.humidity }}%</span
+        >
       </div>
     </el-progress>
-    <el-tree :data="weatherStore.getExtraData" accordion class="w-full" />
+    <el-tree
+      :data="weatherStore.getExtraData"
+      accordion
+      class="w-full shadow-[0px_1px_3px_hsla(195,83%,0%,0.35)] inset-shadow-[0px_0px_3px_hsl(195,83%,50%)]"
+    />
   </div>
   <div v-else-if="weatherStore.errorStatus">
     {{ weatherStore.errorStatus + ". Please try again with different input." }}
@@ -69,5 +75,17 @@ const fullCountryName = computed(() => {
 }
 ::v-deep(.el-progress-circle__track) {
   stroke: hsl(195, 83%, 90%);
+}
+::v-deep(.el-tree) {
+  background-color: hsl(195, 83%, 15%);
+  border-radius: 4px;
+  color: hsl(195, 83%, 90%);
+  --el-tree-node-hover-bg-color: hsl(195, 83%, 20%);
+}
+::v-deep(.el-tree-node__content) {
+  border-radius: 4px;
+}
+::v-deep(.el-tree-node__expand-icon) {
+  color: hsl(195, 83%, 90%);
 }
 </style>
