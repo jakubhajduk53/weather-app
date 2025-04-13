@@ -7,9 +7,13 @@ const weatherStore = useWeatherStore();
 </script>
 
 <template>
-  <div class="flex flex-col h-full gap-5 items-center font-montserrat">
-    <SearchBar />
-    <WeatherContainer v-loading="weatherStore.loadingStatus" />
+  <div class="flex justify-center w-full h-full font-montserrat">
+    <div
+      class="flex flex-col items-center h-full bg-radial from-[hsl(195,50%,65%)] to-[hsl(195,50%,55%)] w-[800px] max-w-[100vw]"
+    >
+      <SearchBar />
+      <WeatherContainer v-loading="weatherStore.loadingStatus" />
+    </div>
   </div>
 </template>
 
