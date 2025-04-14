@@ -25,7 +25,7 @@ const goBack = () => {
       :prefix-icon="Search"
       @keypress.enter="submit"
       clearable
-      class="shadow-md"
+      class="shadow-[0px_0px_10px_hsl(195,83%,15%)]"
       :disabled="weatherStore.isCitySelected"
     >
       <template #append v-if="weatherStore.weatherData"
@@ -41,7 +41,7 @@ const goBack = () => {
       v-if="!weatherStore.isCitySelected"
       color="hsl(195,50%,38%)"
       @click="submit"
-      class="shadow-md"
+      class="shadow-[0px_0px_5px_hsl(195,83%,15%)]"
       >Search</el-button
     >
   </div>
