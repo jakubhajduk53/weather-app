@@ -12,13 +12,13 @@ const weatherStore = useWeatherStore();
   >
     <div class="h-4 w-full bg-[hsl(195,83%,15%)]"></div>
     <div
-      class="flex flex-col items-center h-full bg-radial from-[hsl(195,50%,65%)] to-[hsl(195,50%,55%)] w-[800px] max-w-[100vw]"
+      class="flex flex-col items-center h-full bg-radial from-[hsl(195,50%,65%)] to-[hsl(195,50%,55%)] w-[800px] max-w-[100vw] border-x-4 border-[hsla(195,83%,15%,0.5)]"
     >
       <SearchBar />
       <WeatherContainer v-loading="weatherStore.loadingStatus" />
       <div
         v-if="!weatherStore.weatherData"
-        class="w-[35em] max-w-[70vw] flex flex-col items-center justify-center text-center text-[hsl(195,83%,15%)] translate-y-40"
+        class="w-[35em] max-w-[70vw] flex flex-col items-center justify-center text-center text-[hsl(195,83%,15%)] flex-1"
       >
         <p class="text-xl md:text-3xl font-bold">
           Welcome!<br />Ready to explore today's weather?
@@ -42,6 +42,11 @@ const weatherStore = useWeatherStore();
           covered
         </p>
       </div>
+      <div
+        v-if="!weatherStore.weatherData"
+        id="pattern"
+        class="h-[30%] w-full"
+      ></div>
     </div>
     <div class="h-4 w-full bg-[hsl(195,83%,15%)]"></div>
   </div>

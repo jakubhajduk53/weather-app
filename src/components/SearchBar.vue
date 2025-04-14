@@ -18,25 +18,30 @@ const goBack = () => {
 </script>
 
 <template>
-  <div class="flex gap-2 mt-2 mb-2 w-[600px] max-w-[80vw]">
+  <div class="flex gap-5 my-5 w-[600px] max-w-[80vw] h-10">
     <el-input
       v-model="inputCityName"
-      placeholder="Please Input"
+      placeholder="Input city name"
       :prefix-icon="Search"
       @keypress.enter="submit"
       clearable
-      class="shadow-xs"
+      class="shadow-md"
       :disabled="weatherStore.isCitySelected"
     >
       <template #append v-if="weatherStore.weatherData"
-        ><el-button color="hsl(195,83%,45%)" :icon="Back" @click="goBack" />
+        ><el-button
+          color="hsl(195,50%,38%)"
+          class="shadow-md"
+          :icon="Back"
+          @click="goBack"
+        />
       </template>
     </el-input>
     <el-button
       v-if="!weatherStore.isCitySelected"
-      color="hsl(195,83%,45%)"
+      color="hsl(195,50%,38%)"
       @click="submit"
-      class="shadow-xs"
+      class="shadow-md"
       >Search</el-button
     >
   </div>
@@ -44,6 +49,25 @@ const goBack = () => {
 
 <style scoped>
 .el-input ::v-deep(.el-input-group__append) {
-  background-color: white;
+  background-color: hsl(195, 50%, 38%);
+  color: hsl(42, 10%, 90%);
+}
+::v-deep(.el-input-group__append:hover) {
+  background-color: hsl(195, 50%, 28%);
+  border-color: hsl(195, 50%, 28%);
+  color: hsl(42, 10%, 90%);
+}
+::v-deep(.el-button) {
+  height: 40px;
+  color: hsl(42, 10%, 90%);
+}
+::v-deep(.el-button:hover) {
+  background-color: hsl(195, 50%, 28%);
+  border-color: hsl(195, 50%, 28%);
+  color: hsl(42, 10%, 90%);
+}
+.el-input ::v-deep(.el-input__wrapper) {
+  background-color: hsl(42, 30%, 98%);
+  --el-input-focus-border-color: hsl(195, 50%, 28%);
 }
 </style>
