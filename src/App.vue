@@ -10,9 +10,11 @@ const weatherStore = useWeatherStore();
   <div
     class="flex flex-col items-center justify-center w-full h-full font-montserrat"
   >
-    <div class="h-4 w-full bg-[hsl(195,83%,15%)]"></div>
     <div
-      class="flex flex-col items-center h-full bg-radial from-[hsl(195,50%,65%)] to-[hsl(195,50%,55%)] w-[800px] max-w-[100vw] border-x-4 border-[hsla(195,83%,15%,0.5)]"
+      class="h-4 w-full bg-[hsl(195,83%,15%)] shadow-[0px_0px_5px_hsl(195,83%,15%)]"
+    ></div>
+    <div
+      class="flex flex-col items-center h-full bg-radial from-[hsl(195,50%,65%)] to-[hsl(195,50%,55%)] w-[800px] max-w-[100vw] shadow-[0px_0px_15px_hsl(195,83%,15%)]"
     >
       <SearchBar />
       <WeatherContainer v-loading="weatherStore.loadingStatus" />
@@ -48,7 +50,9 @@ const weatherStore = useWeatherStore();
         class="h-[30%] w-full"
       ></div>
     </div>
-    <div class="h-4 w-full bg-[hsl(195,83%,15%)]"></div>
+    <div
+      class="h-4 w-full bg-[hsl(195,83%,15%)] shadow-[0px_0px_5px_hsl(195,83%,15%)]"
+    ></div>
   </div>
 </template>
 
