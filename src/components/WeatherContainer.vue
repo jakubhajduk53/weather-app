@@ -54,10 +54,13 @@ const fullCountryName = computed(() => {
     <el-tree
       :data="weatherStore.getExtraData"
       accordion
-      class="w-full shadow-[0px_1px_3px_hsla(195,83%,0%,0.35)] inset-shadow-[0px_0px_3px_hsl(195,83%,50%)]"
+      class="w-full shadow-md"
     />
   </div>
-  <div v-else-if="weatherStore.errorStatus">
+  <div
+    v-else-if="weatherStore.errorStatus"
+    class="text-[hsl(346,84%,45%)] w-[20em] max-w-[80%] text-xl md:text-3xl text-center"
+  >
     {{ weatherStore.errorStatus + ". Please try again with different input." }}
   </div>
 </template>
@@ -77,15 +80,15 @@ const fullCountryName = computed(() => {
   stroke: hsl(195, 83%, 90%);
 }
 ::v-deep(.el-tree) {
-  background-color: hsl(195, 83%, 15%);
+  background-color: hsl(195, 50%, 38%);
   border-radius: 4px;
-  color: hsl(195, 83%, 90%);
-  --el-tree-node-hover-bg-color: hsl(195, 83%, 20%);
+  color: hsl(42, 10%, 90%);
+  --el-tree-node-hover-bg-color: hhsl(195, 50%, 38%);
 }
 ::v-deep(.el-tree-node__content) {
   border-radius: 4px;
 }
 ::v-deep(.el-tree-node__expand-icon) {
-  color: hsl(195, 83%, 90%);
+  color: hsl(42, 10%, 90%);
 }
 </style>
