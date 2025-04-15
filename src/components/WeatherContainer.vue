@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useWeatherStore } from "../store/store";
 const weatherStore = useWeatherStore();
-import { ElTree, ElProgress } from "element-plus";
+import { ElTree } from "element-plus";
 import { computed } from "vue";
 
 const weatherIcon = computed(() => {
@@ -17,19 +17,22 @@ const fullCountryName = computed(() => {
 
 <template>
   <div
-    class="flex flex-col text-center items-center justify-center w-[35em] max-w-[80vw] gap-5 p-5 rounded-sm bg-radial from-[hsl(195,50%,75%)] to-[hsl(195,50%,55%)] inset-shadow-[0px_5px_5px_hsl(0,0%,0%,0.15)] shadow-[0px_5px_0px_hsl(0,0%,100%,0.05)]"
+    class="flex flex-col text-center items-center justify-center max-h-full w-[35em] max-w-[90vw] gap-3 md:gap-5 p-3 md:p-5 rounded-sm bg-radial from-[hsl(195,50%,75%)] to-[hsl(195,50%,55%)] inset-shadow-[0px_5px_5px_hsl(0,0%,0%,0.15)] shadow-[0px_5px_0px_hsl(0,0%,100%,0.05)]"
     v-if="weatherStore.weatherData"
   >
     <div class="text-3xl md:text-5xl font-bold break-all">
       {{ fullCountryName }}
     </div>
     <div
-      class="flex flex-col items-center gap-5 inset-shadow-[0px_3px_3px_hsl(0,0%,0%,0.3)] shadow-[0px_3px_0px_hsl(0,0%,100%,0.15)] p-5 rounded-sm w-[20em] max-w-[80%] bg-radial from-[hsl(195,50%,75%)] to-[hsl(195,50%,65%)]"
+      class="flex flex-col items-center gap-3 md:gap-5 p-3 md:p-5 rounded-sm w-[20em] max-w-[80%] inset-shadow-[0px_3px_3px_hsl(0,0%,0%,0.3)] shadow-[0px_3px_0px_hsl(0,0%,100%,0.15)] bg-radial from-[hsl(195,50%,75%)] to-[hsl(195,50%,65%)]"
     >
       <div
-        class="inset-shadow-[0px_5px_5px_hsla(0,0%,0%,0.15)] shadow-[0px_5px_0px_hsla(0,0%,100%,0.15)] rounded-sm"
+        class="rounded-sm inset-shadow-[0px_5px_5px_hsla(0,0%,0%,0.15)] shadow-[0px_5px_0px_hsla(0,0%,100%,0.15)]"
       >
-        <img :src="weatherIcon" class="w-[100px] h-[100px]" />
+        <img
+          :src="weatherIcon"
+          class="w-[75px] h-[75px] md:w-[100px] md:h-[100px]"
+        />
       </div>
 
       <div class="text-3xl md:text-5xl font-semibold">
@@ -39,18 +42,14 @@ const fullCountryName = computed(() => {
         {{ weatherStore.getBasicData.weatherType }}
       </div>
     </div>
-    <el-progress
-      type="circle"
-      :percentage="weatherStore.getBasicData.humidity"
-      class="inset-shadow-[0px_5px_5px_hsla(0,0%,0%,0.15)] shadow-[0px_5px_0px_hsla(0,0%,100%,0.15)] rounded-full p-3"
+    <div
+      class="flex flex-col p-3 rounded-sm inset-shadow-[0px_5px_5px_hsla(0,0%,0%,0.15)] shadow-[0px_5px_0px_hsla(0,0%,100%,0.15)]"
     >
-      <div class="flex flex-col">
-        <span>Humidity</span>
-        <span class="text-xl md:text-3xl"
-          >{{ weatherStore.getBasicData.humidity }}%</span
-        >
-      </div>
-    </el-progress>
+      <span>Humidity</span>
+      <span class="text-xl md:text-3xl font-semibold"
+        >{{ weatherStore.getBasicData.humidity }}%</span
+      >
+    </div>
     <el-tree
       :data="weatherStore.getExtraData"
       accordion
