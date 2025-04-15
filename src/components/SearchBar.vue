@@ -18,7 +18,7 @@ const goBack = () => {
 </script>
 
 <template>
-  <div class="flex gap-5 my-5 w-[600px] max-w-[80vw] h-10">
+  <div class="flex gap-5 my-5 w-[35em] max-w-[80vw] h-10">
     <el-input
       v-model="inputCityName"
       placeholder="Input city name"
@@ -50,6 +50,7 @@ const goBack = () => {
 <style scoped>
 .el-input ::v-deep(.el-input-group__append) {
   background-color: hsl(195, 50%, 38%);
+  border-color: hsl(195, 50%, 38%);
   color: hsl(42, 10%, 90%);
 }
 ::v-deep(.el-input-group__append:hover) {
@@ -60,6 +61,7 @@ const goBack = () => {
 ::v-deep(.el-button) {
   height: 40px;
   color: hsl(42, 10%, 90%);
+  border-color: hsla(195, 50%, 28%, 0.5);
 }
 ::v-deep(.el-button:hover) {
   background-color: hsl(195, 50%, 28%);
@@ -69,5 +71,7 @@ const goBack = () => {
 .el-input ::v-deep(.el-input__wrapper) {
   background-color: hsl(42, 30%, 98%);
   --el-input-focus-border-color: hsl(195, 50%, 28%);
+  --el-input-icon-color: hsl(195, 50%, 28%);
+  --el-input-placeholder-color: hsl(195, 50%, 28%);
 }
 </style>

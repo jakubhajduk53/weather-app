@@ -17,7 +17,7 @@ const fullCountryName = computed(() => {
 
 <template>
   <div
-    class="flex flex-col text-center items-center justify-center w-[600px] max-w-[80vw] gap-5 p-5 rounded-sm bg-radial from-[hsl(195,50%,75%)] to-[hsl(195,50%,55%)] inset-shadow-[0px_5px_5px_hsl(0,0%,0%,0.15)] shadow-[0px_5px_0px_hsl(0,0%,100%,0.05)]"
+    class="flex flex-col text-center items-center justify-center w-[35em] max-w-[80vw] gap-5 p-5 rounded-sm bg-radial from-[hsl(195,50%,75%)] to-[hsl(195,50%,55%)] inset-shadow-[0px_5px_5px_hsl(0,0%,0%,0.15)] shadow-[0px_5px_0px_hsl(0,0%,100%,0.05)]"
     v-if="weatherStore.weatherData"
   >
     <div class="text-3xl md:text-5xl font-bold break-all">
@@ -56,12 +56,6 @@ const fullCountryName = computed(() => {
       accordion
       class="w-full shadow-md"
     />
-  </div>
-  <div
-    v-else-if="weatherStore.errorStatus"
-    class="text-[hsl(346,84%,45%)] w-[20em] max-w-[80%] text-xl md:text-3xl text-center"
-  >
-    {{ weatherStore.errorStatus + ". Please try again with different input." }}
   </div>
 </template>
 
