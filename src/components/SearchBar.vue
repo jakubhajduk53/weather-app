@@ -18,7 +18,7 @@ const goBack = () => {
 </script>
 
 <template>
-  <div class="flex gap-5 my-5 w-[35em] max-w-[80vw] h-10">
+  <div class="flex gap-3 md:gap-5 my-3 md:my-5 w-[35em] max-w-[90vw] h-10">
     <el-input
       v-model="inputCityName"
       placeholder="Input city name"

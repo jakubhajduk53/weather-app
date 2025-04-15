@@ -14,7 +14,7 @@ const weatherStore = useWeatherStore();
       class="h-4 w-full bg-[hsl(195,83%,15%)] shadow-[0px_0px_5px_hsl(195,83%,15%)]"
     />
     <div
-      class="flex flex-col items-center h-full bg-radial from-[hsl(195,50%,65%)] to-[hsl(195,50%,55%)] w-[800px] max-w-[100vw] shadow-[0px_0px_15px_hsl(195,83%,15%)]"
+      class="flex flex-col items-center flex-1 bg-radial from-[hsl(195,50%,65%)] to-[hsl(195,50%,55%)] w-[800px] max-w-[100vw] shadow-[0px_0px_15px_hsl(195,83%,15%)]"
     >
       <div
         :class="
@@ -25,7 +25,7 @@ const weatherStore = useWeatherStore();
       >
         <div
           v-if="!weatherStore.weatherData"
-          class="w-[35em] max-w-[70vw] flex flex-col items-center justify-center text-center gap-5 text-[hsl(195,83%,15%)]"
+          class="w-[35em] max-w-[70vw] flex flex-col items-center justify-center text-center gap-3 md:gap-5 text-[hsl(195,83%,15%)]"
         >
           <p class="text-xl md:text-3xl font-bold">
             Welcome!<br />Ready to explore today's weather?
@@ -44,7 +44,7 @@ const weatherStore = useWeatherStore();
               class="bx bx-cloud-snow text-7xl md:text-9xl self-center text-[hsl(42,30%,98%)]"
             />
           </div>
-          <p class="text-base md:text-xl w-[25em] max-w-[60vw] mb-5">
+          <p class="text-base md:text-xl w-[25em] max-w-[60vw] mb-3 md:mb-5">
             Whether you're chasing the sun or bracing for rain, we've got you
             covered
           </p>
