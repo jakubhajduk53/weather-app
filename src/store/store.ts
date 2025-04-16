@@ -27,7 +27,7 @@ export const useWeatherStore = defineStore("store", {
       const lastUpdate = new Date((state.weatherData?.dt as number) * 1000);
       return [
         {
-          label: "More Info",
+          label: "More Information",
           children: [
             {
               label: "Temperature",
