@@ -17,7 +17,7 @@ const fullCountryName = computed(() => {
 
 <template>
   <div
-    class="flex flex-col text-center items-center justify-center max-h-full w-[35em] max-w-[90vw] gap-3 md:gap-5 p-3 md:p-5 rounded-sm bg-radial from-[hsl(195,50%,75%)] to-[hsl(195,50%,55%)] inset-shadow-[0px_5px_5px_hsl(0,0%,0%,0.15)] shadow-[0px_5px_0px_hsl(0,0%,100%,0.05)]"
+    class="flex flex-col text-center items-center justify-center max-h-full w-[35em] max-w-[90vw] gap-3 md:gap-5 p-3 md:p-5 rounded-sm z-10 bg-radial from-[hsl(195,50%,75%)] to-[hsl(195,50%,55%)] shadow-[0px_0px_15px_hsla(195,83%,15%,0.5)]"
     v-if="weatherStore.weatherData"
   >
     <div class="text-3xl md:text-5xl font-bold break-all">
@@ -63,20 +63,11 @@ const fullCountryName = computed(() => {
   --el-tree-text-color: black;
   --el-tree-expand-icon-color: black;
 }
-.el-progress ::v-deep(.el-progress-circle__path) {
-  stroke: hsl(195, 83%, 35%);
-}
-::v-deep(.el-progress__text) {
-  color: hsl(195, 83%, 15%);
-}
-::v-deep(.el-progress-circle__track) {
-  stroke: hsl(195, 83%, 90%);
-}
 ::v-deep(.el-tree) {
   background-color: hsl(195, 50%, 38%);
   border-radius: 4px;
   color: hsl(42, 10%, 90%);
-  --el-tree-node-hover-bg-color: hhsl(195, 50%, 38%);
+  --el-tree-node-hover-bg-color: hsl(195, 50%, 38%);
 }
 ::v-deep(.el-tree-node__content) {
   border-radius: 4px;
