@@ -17,44 +17,43 @@ const fullCountryName = computed(() => {
 
 <template>
   <div
-    class="flex flex-col text-center items-center justify-center max-h-full w-[35em] max-w-[90vw] gap-3 md:gap-5 p-3 md:p-5 rounded-sm z-10 bg-radial from-[hsl(195,50%,75%)] to-[hsl(195,50%,55%)] shadow-[0px_0px_15px_hsla(195,83%,15%,0.5)]"
+    class="flex flex-col text-center items-center justify-center max-h-full w-[35em] max-w-[90vw] gap-3 md:gap-5 p-3 md:p-5 rounded-xl z-10 shadow-[0px_0px_15px_hsla(195,83%,15%,0.5)]"
     v-if="weatherStore.weatherData"
   >
-    <div class="text-3xl md:text-5xl font-bold break-all">
-      {{ fullCountryName }}
-    </div>
     <div
-      class="flex flex-col items-center gap-3 md:gap-5 p-3 md:p-5 rounded-sm w-[20em] max-w-[80%] inset-shadow-[0px_3px_3px_hsl(0,0%,0%,0.3)] shadow-[0px_3px_0px_hsl(0,0%,100%,0.15)] bg-radial from-[hsl(195,50%,75%)] to-[hsl(195,50%,65%)]"
+      class="flex flex-col items-center gap-3 md:gap-5 p-3 md:p-5 w-[35em] max-w-[90%]"
     >
+      <div class="text-3xl md:text-5xl font-bold break-all">
+        {{ fullCountryName }}
+      </div>
       <div
-        class="rounded-sm inset-shadow-[0px_5px_5px_hsla(0,0%,0%,0.15)] shadow-[0px_5px_0px_hsla(0,0%,100%,0.15)]"
+        class="flex items-center justify-center p-3 md:p-5 rounded-xl bg-radial from-[hsl(195,50%,60%)] to-[hsl(195,50%,65%)] inset-shadow-[0px_3px_3px_hsla(0,0%,0%,0.15)] shadow-[0px_3px_3px_hsla(0,0%,0%,0.15)]"
       >
         <img
           :src="weatherIcon"
           class="w-[75px] h-[75px] md:w-[100px] md:h-[100px]"
         />
       </div>
-
-      <div class="text-3xl md:text-5xl font-semibold">
-        {{ weatherStore.getBasicData.current }}°C
+      <div class="flex flex-col">
+        <span class="text-xl md:text-3xl">
+          {{ weatherStore.getBasicData.weatherType }}
+        </span>
+        <span class="text-3xl md:text-5xl font-semibold">
+          {{ weatherStore.getBasicData.current }}°C
+        </span>
       </div>
-      <div class="text-xl md:text-3xl">
-        {{ weatherStore.getBasicData.weatherType }}
+      <div class="flex flex-col">
+        <span class="text-base md:text-xl">Humidity</span>
+        <span class="text-xl md:text-3xl font-semibold"
+          >{{ weatherStore.getBasicData.humidity }}%</span
+        >
       </div>
+      <el-tree
+        :data="weatherStore.getExtraData"
+        accordion
+        class="p-1 md:p-3 w-full shadow-md"
+      />
     </div>
-    <div
-      class="flex flex-col p-3 rounded-sm inset-shadow-[0px_5px_5px_hsla(0,0%,0%,0.15)] shadow-[0px_5px_0px_hsla(0,0%,100%,0.15)]"
-    >
-      <span>Humidity</span>
-      <span class="text-xl md:text-3xl font-semibold"
-        >{{ weatherStore.getBasicData.humidity }}%</span
-      >
-    </div>
-    <el-tree
-      :data="weatherStore.getExtraData"
-      accordion
-      class="w-full shadow-md"
-    />
   </div>
 </template>
 
@@ -64,15 +63,21 @@ const fullCountryName = computed(() => {
   --el-tree-expand-icon-color: black;
 }
 ::v-deep(.el-tree) {
-  background-color: hsl(195, 50%, 38%);
-  border-radius: 4px;
-  color: hsl(42, 10%, 90%);
-  --el-tree-node-hover-bg-color: hsl(195, 50%, 38%);
+  background-color: hsl(195, 50%, 55%);
+  border-radius: 12px;
+  color: hsl(195, 83%, 15%);
+  --el-tree-node-hover-bg-color: hsl(195, 50%, 55%);
+  font-size: 18px;
+}
+@media (max-width: 768px) {
+  ::v-deep(.el-tree) {
+    font-size: 14px;
+  }
 }
 ::v-deep(.el-tree-node__content) {
-  border-radius: 4px;
+  border-radius: 12px;
 }
 ::v-deep(.el-tree-node__expand-icon) {
-  color: hsl(42, 10%, 90%);
+  color: hsl(195, 83%, 15%);
 }
 </style>

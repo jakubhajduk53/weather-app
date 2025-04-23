@@ -36,10 +36,10 @@ export const useWeatherStore = defineStore("store", {
                   label: `Feels Like: ${state.weatherData?.main?.feels_like}°C`,
                 },
                 {
-                  label: `Minimal Temperature: ${state.weatherData?.main?.temp_min}°C`,
+                  label: `Min Temp: ${state.weatherData?.main?.temp_min}°C`,
                 },
                 {
-                  label: `Max Temperature: ${state.weatherData?.main?.temp_max}°C`,
+                  label: `Max Temp: ${state.weatherData?.main?.temp_max}°C`,
                 },
               ],
             },
@@ -47,7 +47,7 @@ export const useWeatherStore = defineStore("store", {
               label: "Pressure",
               children: [
                 {
-                  label: `Sea Level Pressure: ${state.weatherData?.main?.sea_level}hPa`,
+                  label: `Sea Level: ${state.weatherData?.main?.sea_level}hPa`,
                 },
                 {
                   label: `Ground Level: ${state.weatherData?.main?.grnd_level}hPa`,
