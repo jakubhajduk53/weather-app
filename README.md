@@ -72,7 +72,7 @@
 ### 3D Effects
 
 - `inset-shadow-[0px_3px_3px_hsl(0,0%,0%,0.3)] shadow-[0px_3px_0px_hsl(0,0%,100%,0.15)]`
-- `inset-shadow-[0px_3px_3px_hsla(0,0%,0%,0.15)] shadow-[0px_3px_3px_hsla(0,0%,0%,0.15)]`
+- `inset-shadow-[0px_3px_3px_hsla(0,0%,0%,0.10)] shadow-[0px_3px_3px_hsla(0,0%,0%,0.10)]`
 
 ## 🟦 Border Radius
 

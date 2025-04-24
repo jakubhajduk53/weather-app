@@ -13,7 +13,10 @@ export const useWeatherStore = defineStore("store", {
       return {
         name: state.cityName ?? "",
         tag: state.weatherData?.sys?.country,
-        icon: state.weatherData?.weather[0]?.icon,
+        fullCountryName: `${state.weatherData?.name?.toUpperCase()}, ${
+          state.weatherData?.sys?.country
+        }`,
+        icon: `https://openweathermap.org/img/wn/${state.weatherData?.weather[0]?.icon}@2x.png`,
         current: Math.round(state.weatherData?.main.temp ?? 0),
         weatherType: state.weatherData?.weather[0]?.main,
         humidity: state.weatherData?.main?.humidity,

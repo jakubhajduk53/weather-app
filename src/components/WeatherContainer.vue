@@ -1,57 +1,50 @@
 <script setup lang="ts">
 import { useWeatherStore } from "../store/store";
-const weatherStore = useWeatherStore();
 import { ElTree } from "element-plus";
-import { computed } from "vue";
+import { storeToRefs } from "pinia";
 
-const weatherIcon = computed(() => {
-  return `https://openweathermap.org/img/wn/${weatherStore.getBasicData.icon}@2x.png`;
-});
-
-const fullCountryName = computed(() => {
-  return `${weatherStore.getBasicData.name?.toUpperCase()}, ${
-    weatherStore.getBasicData.tag
-  }`;
-});
+const { weatherData, getBasicData, getExtraData } = storeToRefs(
+  useWeatherStore()
+);
 </script>
 
 <template>
   <div
     class="flex flex-col text-center items-center justify-center max-h-full w-[35em] max-w-[90vw] gap-3 md:gap-5 p-3 md:p-5 rounded-xl z-10 shadow-[0px_0px_15px_hsla(195,83%,15%,0.5)]"
-    v-if="weatherStore.weatherData"
+    v-if="weatherData"
   >
     <div
       class="flex flex-col items-center gap-3 md:gap-5 p-3 md:p-5 w-[35em] max-w-[90%]"
     >
       <div class="text-3xl md:text-5xl font-bold break-all">
-        {{ fullCountryName }}
+        {{ getBasicData.fullCountryName }}
       </div>
       <div
-        class="flex items-center justify-center p-3 md:p-5 rounded-xl bg-radial from-[hsl(195,50%,60%)] to-[hsl(195,50%,65%)] inset-shadow-[0px_3px_3px_hsla(0,0%,0%,0.15)] shadow-[0px_3px_3px_hsla(0,0%,0%,0.15)]"
+        class="flex items-center justify-center p-3 md:p-5 rounded-xl bg-radial from-[hsl(195,50%,60%)] to-[hsl(195,50%,65%)] inset-shadow-[0px_3px_3px_hsla(0,0%,0%,0.10)] shadow-[0px_3px_3px_hsla(0,0%,0%,0.10)]"
       >
         <img
-          :src="weatherIcon"
+          :src="getBasicData.icon"
           class="w-[75px] h-[75px] md:w-[100px] md:h-[100px]"
         />
       </div>
       <div class="flex flex-col">
         <span class="text-xl md:text-3xl">
-          {{ weatherStore.getBasicData.weatherType }}
+          {{ getBasicData.weatherType }}
         </span>
         <span class="text-3xl md:text-5xl font-semibold">
-          {{ weatherStore.getBasicData.current }}°C
+          {{ getBasicData.current }}°C
         </span>
       </div>
       <div class="flex flex-col">
         <span class="text-base md:text-xl">Humidity</span>
         <span class="text-xl md:text-3xl font-semibold"
-          >{{ weatherStore.getBasicData.humidity }}%</span
+          >{{ getBasicData.humidity }}%</span
         >
       </div>
       <el-tree
-        :data="weatherStore.getExtraData"
+        :data="getExtraData"
         accordion
-        class="p-1 md:p-3 w-full shadow-md"
+        class="p-1 md:p-3 w-full inset-shadow-[0px_3px_3px_hsla(0,0%,0%,0.1)] shadow-[0px_3px_3px_hsla(0,0%,0%,0.1)]"
       />
     </div>
   </div>
