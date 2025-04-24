@@ -68,10 +68,15 @@ const fullCountryName = computed(() => {
   color: hsl(195, 83%, 15%);
   --el-tree-node-hover-bg-color: hsl(195, 50%, 55%);
   font-size: 18px;
+  font-weight: 600;
 }
 @media (max-width: 768px) {
   ::v-deep(.el-tree) {
     font-size: 14px;
+  }
+
+  .el-tree ::v-deep(.el-tree-node__children) {
+    font-size: 12px;
   }
 }
 ::v-deep(.el-tree-node__content) {
@@ -79,5 +84,9 @@ const fullCountryName = computed(() => {
 }
 ::v-deep(.el-tree-node__expand-icon) {
   color: hsl(195, 83%, 15%);
+}
+::v-deep(.el-tree-node__children) {
+  font-size: 16px;
+  font-weight: 500;
 }
 </style>
