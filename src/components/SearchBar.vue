@@ -3,9 +3,11 @@ import { ElInput, ElButton } from "element-plus";
 import { Search, Back } from "@element-plus/icons-vue";
 import { useWeatherStore } from "../store/store";
 import { ref } from "vue";
+import { storeToRefs } from "pinia";
 
 const inputCityName = ref<string>("");
 const weatherStore = useWeatherStore();
+const { cityName, isCitySelected } = storeToRefs(weatherStore);
 
 const submit = () => {
   weatherStore.getWeatherData(inputCityName.value);
@@ -18,27 +20,35 @@ const goBack = () => {
 </script>
 
 <template>
-  <div class="flex gap-3 md:gap-5 my-3 md:my-5 w-[35em] max-w-[90vw] h-10">
+  <div class="flex my-3 md:my-5 w-[35em] max-w-[90vw] h-10">
+    <div v-if="!isCitySelected" class="flex w-full gap-3 md:gap-5">
+      <el-input
+        v-model="inputCityName"
+        placeholder="Input city name"
+        :prefix-icon="Search"
+        @keypress.enter="submit"
+        clearable
+        class="shadow-[0px_0px_5px_hsl(195,83%,15%)]"
+      />
+      <el-button
+        color="hsl(195,50%,38%)"
+        @click="submit"
+        class="shadow-[0px_0px_5px_hsl(195,83%,15%)]"
+        >Search</el-button
+      >
+    </div>
     <el-input
-      v-model="inputCityName"
+      v-else
+      v-model="cityName"
       placeholder="Input city name"
       :prefix-icon="Search"
-      @keypress.enter="submit"
-      clearable
       class="shadow-[0px_0px_5px_hsl(195,83%,15%)]"
-      :disabled="weatherStore.isCitySelected"
+      disabled
     >
-      <template #append v-if="weatherStore.weatherData"
+      <template #append
         ><el-button color="hsl(195,50%,38%)" :icon="Back" @click="goBack" />
       </template>
     </el-input>
-    <el-button
-      v-if="!weatherStore.isCitySelected"
-      color="hsl(195,50%,38%)"
-      @click="submit"
-      class="shadow-[0px_0px_5px_hsl(195,83%,15%)]"
-      >Search</el-button
-    >
   </div>
 </template>
 

@@ -52,6 +52,7 @@ export interface WeatherResponse {
 export interface BasicData {
   name?: string;
   tag?: string;
+  fullCountryName?: string;
   icon?: string;
   current?: number;
   weatherType?: string;
