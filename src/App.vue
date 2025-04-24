@@ -25,7 +25,7 @@ const weatherStore = useWeatherStore();
       >
         <div
           v-if="!weatherStore.weatherData"
-          class="w-[35em] max-w-[70vw] flex flex-col items-center justify-center text-center gap-3 md:gap-5 text-[hsl(195,83%,15%)]"
+          class="w-[35em] max-w-[70vw] flex flex-col items-center justify-center text-center gap-3 md:gap-5"
         >
           <p class="text-xl md:text-3xl font-bold">
             Welcome!<br />Ready to explore today's weather?
