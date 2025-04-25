@@ -1,5 +1,5 @@
 import { ref } from "vue";
-import type { WeatherResponse } from "../interfaces/interfaces";
+import type { WeatherResponse } from "../interfaces";
 
 const apiKey = import.meta.env.VITE_API_KEY;
 

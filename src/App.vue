@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useWeatherStore } from "./store/store";
+import { useWeatherStore } from "./store";
 import SearchBar from "./components/SearchBar.vue";
 import WeatherContainer from "./components/WeatherContainer.vue";
 import WeatherIcons from "./components/WeatherIcons.vue";
