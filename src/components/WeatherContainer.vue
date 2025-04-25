@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useWeatherStore } from "../store/store";
+import { useWeatherStore } from "../store";
 import { ElTree } from "element-plus";
 import { storeToRefs } from "pinia";
 

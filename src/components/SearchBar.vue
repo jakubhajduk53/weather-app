@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ElInput, ElButton } from "element-plus";
 import { Search, Back } from "@element-plus/icons-vue";
-import { useWeatherStore } from "../store/store";
+import { useWeatherStore } from "../store";
 import { ref } from "vue";
 import { storeToRefs } from "pinia";
 
@@ -10,7 +10,7 @@ const weatherStore = useWeatherStore();
 const { cityName, isCitySelected } = storeToRefs(weatherStore);
 
 const submit = () => {
-  weatherStore.getWeatherData(inputCityName.value);
+  weatherStore.fetchWeatherData(inputCityName.value);
 };
 
 const goBack = () => {

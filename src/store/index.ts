@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { useFetchWeather } from "../composables/useFetchWeather";
-import type { BasicData, ExtraDataTree, State } from "../interfaces/interfaces";
+import type { BasicData, ExtraDataTree, State } from "../interfaces";
 export const useWeatherStore = defineStore("store", {
   state: (): State => ({
     weatherData: undefined,
@@ -113,7 +113,7 @@ export const useWeatherStore = defineStore("store", {
       this.errorStatus = undefined;
       this.loadingStatus = false;
     },
-    async getWeatherData(inputCityName: string) {
+    async fetchWeatherData(inputCityName: string) {
       this.clear();
       this.cityName = inputCityName;
       await this.fetch();
