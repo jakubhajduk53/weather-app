@@ -6,9 +6,7 @@ import WeatherIcons from "./components/WeatherIcons.vue";
 import Banner from "./components/Banner.vue";
 import { storeToRefs } from "pinia";
 
-const { weatherData, cityName, errorStatus, loadingStatus } = storeToRefs(
-  useWeatherStore()
-);
+const { weatherData, loadingStatus } = storeToRefs(useWeatherStore());
 </script>
 
 <template>
@@ -17,14 +15,13 @@ const { weatherData, cityName, errorStatus, loadingStatus } = storeToRefs(
   >
     <Banner />
     <div
-      class="flex flex-col items-center flex-1 bg-radial from-[hsl(195,50%,65%)] to-[hsl(195,50%,55%)] w-[800px] max-w-[100vw] shadow-[0px_0px_15px_hsl(195,83%,15%)]"
+      class="flex flex-col items-center h-full bg-radial from-[hsl(195,50%,65%)] to-[hsl(195,50%,55%)] w-[800px] min-w-[30%] max-w-[100vw] shadow-[0px_0px_15px_hsl(195,83%,15%)]"
     >
       <div
         v-if="!weatherData"
-        class="flex flex-col h-full justify-center items-center"
+        class="flex flex-col w-full h-full justify-center items-center"
       >
         <div
-          v-if="!cityName"
           class="w-[35em] max-w-[70vw] flex flex-col items-center justify-center text-center gap-3 md:gap-5"
         >
           <p class="text-xl md:text-3xl font-bold">
@@ -36,19 +33,9 @@ const { weatherData, cityName, errorStatus, loadingStatus } = storeToRefs(
             covered
           </p>
         </div>
-        <div class="flex flex-col items-center justify-self-start">
-          <SearchBar />
-          <div
-            v-if="errorStatus"
-            class="text-[hsl(346,84%,45%)] w-[20em] max-w-[80%] text-base md:text-xl text-center"
-          >
-            {{ errorStatus + ". Please try again with different input." }}
-          </div>
-        </div>
-      </div>
-      <div v-else>
         <SearchBar />
       </div>
+      <SearchBar v-else />
       <WeatherContainer v-loading="loadingStatus" />
       <div v-if="!weatherData" id="pattern" class="h-[30%] w-full" />
     </div>

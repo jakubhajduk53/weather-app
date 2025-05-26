@@ -7,7 +7,7 @@ import { storeToRefs } from "pinia";
 
 const inputCityName = ref<string>("");
 const weatherStore = useWeatherStore();
-const { cityName, isCitySelected } = storeToRefs(weatherStore);
+const { cityName, isCitySelected, errorStatus } = storeToRefs(weatherStore);
 
 const placeholder = computed(() => {
   return isCitySelected.value ? cityName.value : "Input city name";
@@ -18,13 +18,15 @@ const submit = () => {
 };
 
 onMounted(() => {
-  inputCityName.value = cityName.value as string;
+  if (isCitySelected) {
+    inputCityName.value = cityName.value as string;
+  }
 });
 </script>
 
 <template>
-  <div class="flex my-3 md:my-5 w-[35em] max-w-[90vw] h-10">
-    <div class="flex w-full gap-3 md:gap-5">
+  <div class="flex flex-col w-full items-center gap-3 md:gap-5 py-3 md:py-5">
+    <div class="flex max-w-[90vw] w-[35em] gap-3 md:gap-5">
       <el-input
         v-model="inputCityName"
         :placeholder="placeholder"
@@ -39,6 +41,12 @@ onMounted(() => {
         class="shadow-[0px_0px_5px_hsl(195,83%,15%)]"
         >Search</el-button
       >
+    </div>
+    <div
+      v-if="errorStatus"
+      class="text-[hsl(346,84%,45%)] w-[20em] max-w-[80%] text-base md:text-xl text-center"
+    >
+      {{ `${errorStatus}. Please try again with different input.` }}
     </div>
   </div>
 </template>
