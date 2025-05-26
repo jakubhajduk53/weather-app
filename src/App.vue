@@ -6,7 +6,7 @@ import WeatherIcons from "./components/WeatherIcons.vue";
 import Banner from "./components/Banner.vue";
 import { storeToRefs } from "pinia";
 
-const { weatherData, errorStatus, loadingStatus } = storeToRefs(
+const { weatherData, cityName, errorStatus, loadingStatus } = storeToRefs(
   useWeatherStore()
 );
 </script>
@@ -21,9 +21,10 @@ const { weatherData, errorStatus, loadingStatus } = storeToRefs(
     >
       <div
         v-if="!weatherData"
-        class="flex flex-col flex-1 justify-center items-center"
+        class="flex flex-col h-full justify-center items-center"
       >
         <div
+          v-if="!cityName"
           class="w-[35em] max-w-[70vw] flex flex-col items-center justify-center text-center gap-3 md:gap-5"
         >
           <p class="text-xl md:text-3xl font-bold">
@@ -35,12 +36,14 @@ const { weatherData, errorStatus, loadingStatus } = storeToRefs(
             covered
           </p>
         </div>
-        <SearchBar />
-        <div
-          v-if="errorStatus"
-          class="text-[hsl(346,84%,45%)] w-[20em] max-w-[80%] text-base md:text-xl text-center"
-        >
-          {{ errorStatus + ". Please try again with different input." }}
+        <div class="flex flex-col items-center justify-self-start">
+          <SearchBar />
+          <div
+            v-if="errorStatus"
+            class="text-[hsl(346,84%,45%)] w-[20em] max-w-[80%] text-base md:text-xl text-center"
+          >
+            {{ errorStatus + ". Please try again with different input." }}
+          </div>
         </div>
       </div>
       <div v-else>

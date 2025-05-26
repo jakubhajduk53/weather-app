@@ -2,7 +2,7 @@
 import { ElInput, ElButton } from "element-plus";
 import { Search } from "@element-plus/icons-vue";
 import { useWeatherStore } from "../store";
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { storeToRefs } from "pinia";
 
 const inputCityName = ref<string>("");
@@ -16,6 +16,10 @@ const placeholder = computed(() => {
 const submit = () => {
   weatherStore.fetchWeatherData(inputCityName.value);
 };
+
+onMounted(() => {
+  inputCityName.value = cityName.value as string;
+});
 </script>
 
 <template>
