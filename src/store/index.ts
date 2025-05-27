@@ -100,11 +100,11 @@ export const useWeatherStore = defineStore("store", {
   },
   actions: {
     async fetch() {
+      this.errorStatus = undefined;
       const { result, error, fetchWeather } = useFetchWeather();
       this.loadingStatus = true;
       await fetchWeather(this.cityName as string);
       this.weatherData = undefined;
-      this.errorStatus = undefined;
       this.loadingStatus = false;
       this.weatherData = result.value;
       this.errorStatus = error.value;

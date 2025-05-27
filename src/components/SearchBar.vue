@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ElInput, ElButton } from "element-plus";
+import { ElInput, ElButton, ElMessage } from "element-plus";
 import { Search } from "@element-plus/icons-vue";
 import { useWeatherStore } from "../store";
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, watch } from "vue";
 import { storeToRefs } from "pinia";
 
 const inputCityName = ref<string>("");
@@ -22,6 +22,17 @@ onMounted(() => {
     inputCityName.value = cityName.value as string;
   }
 });
+
+watch(errorStatus, (newStatus) => {
+  if (newStatus) {
+    ElMessage({
+      showClose: true,
+      message: `${newStatus}. Please try again with different input.`,
+      type: "error",
+      plain: true,
+    });
+  }
+});
 </script>
 
 <template>
@@ -39,16 +50,14 @@ onMounted(() => {
         >Search</el-button
       >
     </div>
-    <div
-      v-if="errorStatus"
-      class="text-[hsl(346,84%,45%)] w-[20em] max-w-[80%] text-base md:text-xl text-center"
-    >
-      {{ `${errorStatus}. Please try again with different input.` }}
-    </div>
   </div>
 </template>
 
 <style scoped>
+.el-alert {
+  width: 35em;
+  max-width: 90vw;
+}
 .el-input ::v-deep(.el-input-group__append) {
   background-color: hsl(195, 50%, 26%);
   border-color: hsl(195, 50%, 26%);
