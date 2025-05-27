@@ -64,8 +64,9 @@
 
 ## 🌫️ Box Shadows
 
-- `shadow-[0px_0px_5px_hsl(195,83%,15%)]` – headers, inputs & buttons
+- `shadow-[0px_0px_5px_hsl(195,83%,15%)]` – headers
 - `shadow-[0px_0px_15px_hsl(195,83%,15%)]` – container
+- `shadow-sm` - inputs & buttons
 - `shadow-md`
 - `shadow-[0px_0px_15px_hsla(195,83%,15%,0.5)]` – weather container
 
