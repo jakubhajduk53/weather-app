@@ -33,12 +33,9 @@ onMounted(() => {
         :prefix-icon="Search"
         @keypress.enter="submit"
         clearable
-        class="shadow-[0px_0px_5px_hsl(195,83%,15%)]"
+        class="shadow-sm"
       />
-      <el-button
-        color="hsl(195,50%,38%)"
-        @click="submit"
-        class="shadow-[0px_0px_5px_hsl(195,83%,15%)]"
+      <el-button color="hsl(195,50%,38%)" @click="submit" class="shadow-sm"
         >Search</el-button
       >
     </div>
