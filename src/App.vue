@@ -5,8 +5,22 @@ import WeatherContainer from "./components/WeatherContainer.vue";
 import WeatherIcons from "./components/WeatherIcons.vue";
 import Banner from "./components/Banner.vue";
 import { storeToRefs } from "pinia";
+import { watch } from "vue";
+import { ElMessage } from "element-plus";
 
-const { weatherData, loadingStatus } = storeToRefs(useWeatherStore());
+const { weatherData, loadingStatus, errorStatus } = storeToRefs(
+  useWeatherStore()
+);
+watch(errorStatus, (newStatus) => {
+  if (newStatus) {
+    ElMessage({
+      showClose: true,
+      message: `${newStatus}. Please try again with different input.`,
+      type: "error",
+      plain: true,
+    });
+  }
+});
 </script>
 
 <template>

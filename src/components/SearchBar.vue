@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { ElInput, ElButton, ElMessage } from "element-plus";
+import { ElInput, ElButton } from "element-plus";
 import { Search } from "@element-plus/icons-vue";
 import { useWeatherStore } from "../store";
-import { ref, computed, onMounted, watch } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { storeToRefs } from "pinia";
 
 const inputCityName = ref<string>("");
 const weatherStore = useWeatherStore();
-const { cityName, isCitySelected, errorStatus } = storeToRefs(weatherStore);
+const { cityName, isCitySelected } = storeToRefs(weatherStore);
 
 const placeholder = computed(() => {
   return isCitySelected.value ? cityName.value : "Input city name";
@@ -20,17 +20,6 @@ const submit = () => {
 onMounted(() => {
   if (isCitySelected) {
     inputCityName.value = cityName.value as string;
-  }
-});
-
-watch(errorStatus, (newStatus) => {
-  if (newStatus) {
-    ElMessage({
-      showClose: true,
-      message: `${newStatus}. Please try again with different input.`,
-      type: "error",
-      plain: true,
-    });
   }
 });
 </script>
