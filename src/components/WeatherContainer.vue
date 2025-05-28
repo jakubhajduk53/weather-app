@@ -10,7 +10,7 @@ const { weatherData, getBasicData, getExtraData } = storeToRefs(
 
 <template>
   <div
-    class="flex flex-col text-center items-center justify-center max-h-full w-[35em] max-w-[90vw] gap-3 md:gap-5 p-3 md:p-5 rounded-xl z-10 shadow-[0px_0px_15px_hsla(195,83%,15%,0.5)]"
+    class="flex flex-col text-center items-center justify-center max-h-full w-[35em] max-w-[90vw] gap-3 md:gap-5 p-3 md:p-5 rounded-xl z-10 inset-shadow-[0px_3px_3px_hsla(0,0%,10%,0.2)] shadow-[0px_3px_3px_hsla(0,0%,90%,0.2)]"
     v-if="weatherData"
   >
     <div

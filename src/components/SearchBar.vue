@@ -60,7 +60,7 @@ onMounted(() => {
 ::v-deep(.el-button) {
   height: 40px;
   color: hsl(42, 10%, 95%);
-  border-color: hsla(195, 50%, 22%, 0.5);
+  border-color: hsla(195, 50%, 22%, 0.1);
   background-color: hsl(195, 50%, 26%);
 }
 ::v-deep(.el-button:hover) {
@@ -72,7 +72,7 @@ onMounted(() => {
   background-color: hsl(42, 30%, 98%);
   --el-input-focus-border-color: hsl(195, 50%, 28%);
   --el-input-icon-color: hsl(195, 50%, 28%);
-  --el-input-placeholder-color: hsl(195, 50%, 28%);
+  --el-input-placeholder-color: hsl(195, 20%, 60%);
 }
 ::v-deep(.el-input__inner) {
   color: hsl(195, 83%, 15%);
