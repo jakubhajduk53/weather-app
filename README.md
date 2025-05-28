@@ -86,3 +86,10 @@
 ## 🧵 Background Pattern
 
 - Patterns from: [Hero Patterns](https://heropatterns.com/)
+
+## 🛠️ Technologies Used
+
+- `Vue`
+- `Pinia`
+- `Tailwind CSS`
+- `Element Plus`
