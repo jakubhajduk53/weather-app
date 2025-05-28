@@ -50,7 +50,10 @@ watch(errorStatus, (newStatus) => {
         <SearchBar />
       </div>
       <SearchBar v-else />
-      <WeatherContainer v-loading="loadingStatus" />
+      <WeatherContainer
+        v-loading="loadingStatus"
+        element-loading-text="Loading..."
+      />
       <div v-if="!weatherData" id="pattern" class="h-[30%] w-full" />
     </div>
     <Banner />
