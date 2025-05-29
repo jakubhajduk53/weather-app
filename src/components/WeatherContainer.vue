@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { useWeatherStore } from "../store";
 import { ElTree } from "element-plus";
 import { storeToRefs } from "pinia";
+import { useWeatherStore } from "../store";
 
-const { weatherData, getBasicData, getExtraData } = storeToRefs(
-  useWeatherStore()
-);
+const store = useWeatherStore();
+const { weatherData, getBasicData, getExtraData } = storeToRefs(store);
 </script>
 
 <template>
