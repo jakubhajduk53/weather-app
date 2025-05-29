@@ -1,15 +1,15 @@
 <script setup lang="ts">
+import { ElMessage } from "element-plus";
+import { watch } from "vue";
+import { storeToRefs } from "pinia";
 import { useWeatherStore } from "./store";
 import SearchBar from "./components/SearchBar.vue";
 import WeatherContainer from "./components/WeatherContainer.vue";
 import WeatherIcons from "./components/WeatherIcons.vue";
-import { storeToRefs } from "pinia";
-import { watch } from "vue";
-import { ElMessage } from "element-plus";
 
-const { weatherData, loadingStatus, errorStatus } = storeToRefs(
-  useWeatherStore()
-);
+const store = useWeatherStore();
+const { weatherData, loadingStatus, errorStatus } = storeToRefs(store);
+
 watch(errorStatus, (newStatus) => {
   if (newStatus) {
     ElMessage({

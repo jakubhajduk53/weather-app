@@ -1,25 +1,25 @@
 <script setup lang="ts">
 import { ElInput, ElButton } from "element-plus";
 import { Search } from "@element-plus/icons-vue";
-import { useWeatherStore } from "../store";
 import { ref, computed, onMounted } from "vue";
 import { storeToRefs } from "pinia";
+import { useWeatherStore } from "../store";
 
 const inputCityName = ref<string>("");
-const weatherStore = useWeatherStore();
-const { cityName, isCitySelected } = storeToRefs(weatherStore);
+const store = useWeatherStore();
+const { cityName, isCitySelected } = storeToRefs(store);
 
 const placeholder = computed(() => {
   return isCitySelected.value ? cityName.value : "Input city name";
 });
 
 const submit = () => {
-  weatherStore.fetchWeatherData(inputCityName.value);
+  store.fetchWeatherData(inputCityName.value);
 };
 
 onMounted(() => {
-  if (isCitySelected) {
-    inputCityName.value = cityName.value as string;
+  if (isCitySelected.value) {
+    inputCityName.value = cityName.value ?? "";
   }
 });
 </script>
