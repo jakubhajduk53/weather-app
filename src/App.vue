@@ -3,7 +3,6 @@ import { useWeatherStore } from "./store";
 import SearchBar from "./components/SearchBar.vue";
 import WeatherContainer from "./components/WeatherContainer.vue";
 import WeatherIcons from "./components/WeatherIcons.vue";
-import Banner from "./components/Banner.vue";
 import { storeToRefs } from "pinia";
 import { watch } from "vue";
 import { ElMessage } from "element-plus";
@@ -27,7 +26,9 @@ watch(errorStatus, (newStatus) => {
   <div
     class="flex flex-col items-center justify-center w-full h-full font-montserrat"
   >
-    <Banner />
+    <div
+      class="h-4 w-full bg-[hsl(195,83%,15%)] shadow-[0px_0px_5px_hsl(195,83%,15%)]"
+    />
     <div
       class="flex flex-col items-center h-full bg-radial from-[hsl(195,50%,65%)] to-[hsl(195,50%,55%)] w-[800px] min-w-[30%] max-w-[100vw] shadow-[0px_0px_15px_hsl(195,83%,15%)]"
     >
@@ -56,7 +57,9 @@ watch(errorStatus, (newStatus) => {
       />
       <div v-if="!weatherData" id="pattern" class="h-[30%] w-full" />
     </div>
-    <Banner />
+    <div
+      class="h-4 w-full bg-[hsl(195,83%,15%)] shadow-[0px_0px_5px_hsl(195,83%,15%)]"
+    />
   </div>
 </template>
 
